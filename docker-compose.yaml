@@ -1,0 +1,17 @@
+version: "3.1"
+services:
+  web:
+    build: .
+    container_name: feWeb
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - TITLE=FE challenge
+    entrypoint:
+      - yarn
+    command:
+      - dev:docker
