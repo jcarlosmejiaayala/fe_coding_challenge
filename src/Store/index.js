@@ -4,7 +4,7 @@
 
 import React, { Component, createContext } from 'react'
 
-const PER_PAGE = 100
+const PER_PAGE = 20
 const DEFAULT_STATE = {
   page: 1,
   user: {},
