@@ -1,3 +1,4 @@
+const { ProgressPlugin, NamedModulesPlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const { smart } = require('webpack-merge')
@@ -79,10 +80,15 @@ const base = {
   },
 
   plugins: [
+    new NamedModulesPlugin(),
+    new ProgressPlugin(),
     new HtmlWebpackPlugin({
       title,
+
       filename: 'index.html',
+
       inject: 'body',
+
       template: templateFilePath
     })
   ]
@@ -95,8 +101,11 @@ const development = {
 
   devServer: {
     port,
+
     host: '0.0.0.0',
+
     inline: true,
+
     watchOptions: {
       ignored: [/node_modules/]
     }
@@ -117,14 +126,18 @@ const optimized = {
   plugins: [
     new UglifyJsPlugin({
       sourceMap: true,
+
       uglifyOptions: {
         compress: {
           warnings: false,
+
           conditionals: true,
+
           comparisons: false
         },
         output: {
           comments: false,
+
           ascii_only: true
         }
       }

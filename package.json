@@ -25,15 +25,13 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "dotenv": "^6.0.0",
     "enzyme": "^3.5.0",
-    "enzyme-adapter-react-16": "^1.3.0",
+    "enzyme-adapter-react-16": "^1.3.1",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
@@ -71,10 +69,14 @@
     ]
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
     "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/assetsTransformer.js",
       "Components(.*)$": "<rootDir>/src/Components/$1",
       "Routes(.*)$": "<rootDir>/src/Routes/$1",
       "Store(.*)$": "<rootDir>/src/Store/$1",
@@ -84,18 +86,38 @@
     "testMatch": [
       "<rootDir>/src/**/unit.js"
     ],
-    "setupFiles": [
-      "<rootDir>/testing.setup.js"
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
     ]
   },
   "babel": {
     "presets": [
-      "env",
-      "react"
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              ">0.25%",
+              "not ie 11",
+              "not op_mini all"
+            ]
+          }
+        }
+      ]
     ],
     "plugins": [
-      "babel-plugin-transform-class-properties",
-      "babel-plugin-transform-async-to-generator"
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-proposal-async-generator-functions",
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   }
 }
