@@ -1,6 +1,8 @@
+/* eslint global-require: "warn" */
 const { ProgressPlugin, NamedModulesPlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 const { smart } = require('webpack-merge')
 const { resolve } = require('path')
 
@@ -75,6 +77,87 @@ const base = {
             ]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(bmp|gif|jpe?g|png)$/,
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 8192
+        }
+      },
+      {
+        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              mimetype: 'application/font-woff'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              mimetype: 'application/octet-stream'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              mimetype: 'image/svg+xml'
+            }
+          }
+        ]
       }
     ]
   },

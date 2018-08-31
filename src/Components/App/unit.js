@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 
 import App from 'Components/App'
 import { Provider } from 'Store'
@@ -17,9 +18,15 @@ describe('<App />', () => {
     expect(wrapper.props()).toHaveProperty('children')
   })
 
-  it('Should Provider be preset as child', () => {
+  it('Should <Provider/> be preset', () => {
     const wrapper = shallow(<App />)
 
     expect(wrapper.find(Provider)).toHaveLength(1)
+  })
+
+  it('Should <MuiThemeProvider /> be present', () => {
+    const wrapper = shallow(<App />)
+
+    expect(wrapper.find(MuiThemeProvider)).toHaveLength(1)
   })
 })
