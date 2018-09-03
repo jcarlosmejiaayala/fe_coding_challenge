@@ -185,9 +185,9 @@ const development = {
   devServer: {
     port,
 
-    host: '0.0.0.0',
-
     inline: true,
+
+    contentBase: distPath,
 
     watchOptions: {
       ignored: [/node_modules/]
