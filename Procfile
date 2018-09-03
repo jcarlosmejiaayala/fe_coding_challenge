@@ -1,1 +1,1 @@
-web: NODE_ENV=development yarn dev
+web: yarn dev

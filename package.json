@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack",
-    "dev": "PORT=3000 webpack-dev-server --open --progress",
+    "dev": "webpack-dev-server --open --progress",
     "dev:docker": "yarn && yarn dev",
     "pretest": "yarn lint",
     "test": "jest",
