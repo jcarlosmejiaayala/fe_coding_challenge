@@ -11,7 +11,7 @@
     "dev:docker": "yarn && yarn dev",
     "pretest": "yarn lint",
     "test": "jest",
-    "lint": "eslint . --ignore-path .gitignore",
+    "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
     "precommit": "lint-staged",
     "prepush": "yarn test"
