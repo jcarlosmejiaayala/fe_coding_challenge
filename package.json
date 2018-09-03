@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack",
-    "dev": "webpack-dev-server --open --progress",
+    "dev": "PORT=3000 webpack-dev-server --open --progress",
     "dev:docker": "yarn && yarn dev",
     "pretest": "yarn lint",
     "test": "jest",
@@ -31,7 +31,6 @@
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
     "css-loader": "^1.0.0",
-    "dotenv": "^6.0.0",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.1",
     "eslint": "^5.4.0",

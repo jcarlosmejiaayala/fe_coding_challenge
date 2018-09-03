@@ -6,15 +6,17 @@ const autoprefixer = require('autoprefixer')
 const { smart } = require('webpack-merge')
 const { resolve } = require('path')
 
-require('dotenv').config()
-
 const nodeModulePath = resolve('node_modules')
 const distPath = resolve(__dirname, 'dist')
 const srcDirPath = resolve(__dirname, 'src')
 const entryPointFilePath = resolve(srcDirPath, 'index.js')
 const templateFilePath = resolve(srcDirPath, 'index.html')
 
-const { NODE_ENV, PORT: port, TITLE: title } = process.env
+const {
+  NODE_ENV = 'development',
+  PORT: port = 3000,
+  TITLE: title = 'Fe Coding Challenge'
+} = process.env
 
 const IS_OPTIMIZED = NODE_ENV !== 'development'
 
