@@ -23,6 +23,9 @@ const styles = {
   }
 }
 
+/*
+* <SearchFrom />, as components, wraps a form that submits a username to find through github api.
+*/
 const SearchFrom = ({ handleOnSubmit, classes }) => (
   <form onSubmit={handleOnSubmit} className={classes.root}>
     <TextField

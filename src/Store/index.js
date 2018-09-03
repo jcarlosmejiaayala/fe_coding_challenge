@@ -13,6 +13,9 @@ const DEFAULT_STATE = {
 
 const Context = createContext(DEFAULT_STATE)
 
+/*
+* <Consumer />, as HOC, helps to pass the state down and make it available through props
+*/
 export const Consumer = Mixin =>
   class extends Component {
     render() {
@@ -23,6 +26,10 @@ export const Consumer = Mixin =>
       )
     }
   }
+
+/*
+* <Provider /> serves all the state and updates the state by handlers
+*/
 export class Provider extends Component {
   state = DEFAULT_STATE
 

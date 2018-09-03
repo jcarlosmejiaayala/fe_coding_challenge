@@ -29,6 +29,9 @@ const styles = {
   }
 }
 
+/*
+* <UserInfo /> shows details about the user in place.
+*/
 const UserInfo = ({ user: { avatarUrl, login, followers }, classes }) => (
   <div className={classes.root}>
     <Card className={classes.card}>

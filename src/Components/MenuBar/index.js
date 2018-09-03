@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography'
 
 import SearchForm from 'Components/SearchForm'
 
+/*
+* <MenuBar /> displayed at the top, serves to wrap the searcher to get a github user
+*/
 const MenuBar = () => (
   <AppBar position="static">
     <Toolbar variant="dense">

@@ -17,6 +17,10 @@ const styles = {
   }
 }
 
+/*
+* <RenderShowMoreButton /> renders conditionally the button when currentFollowers counter
+* doesn't overpass the maximon total of followers.
+*/
 const RenderShowMoreButton = ({
   followersTotal,
   currentFollowersCount,
@@ -28,6 +32,9 @@ const RenderShowMoreButton = ({
     </Button>
   )
 
+/*
+  * <Followers /> renders the button to get more followers and the list of displayed followers
+  */
 const Followers = ({
   user,
   followers,

@@ -5,7 +5,9 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
 import { Provider } from 'Store'
-
+/*
+* Overwriting default theme for ui-material
+*/
 const theme = createMuiTheme({
   palette: {
     primary: blue,
@@ -13,6 +15,9 @@ const theme = createMuiTheme({
   }
 })
 
+/*
+* <App /> component serves as entrypoint for the provider and wraps the entire application to pass the state down
+*/
 const App = ({ children }) => (
   <Provider>
     <MuiThemeProvider theme={theme}>

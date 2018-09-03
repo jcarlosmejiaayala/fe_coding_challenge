@@ -12,6 +12,10 @@ const styles = {
   }
 }
 
+/*
+* <UserContent /> serves to display user info once it reaches, the conditional determines if the components
+* should display inner components just in case that a user is present.
+*/
 const UserContent = ({ user, classes }) =>
   !!Object.keys(user).length && (
     <Grid container direction="row" className={classes.content}>
